@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from .datasources import NotesManager
+from .services import NotesManager
 
 notes = Blueprint("notes", __name__)
 

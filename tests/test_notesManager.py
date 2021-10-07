@@ -1,6 +1,6 @@
 import pytest
 
-from notesAPI.datasources import NotesManager
+from notesAPI.services import NotesManager
 
 @pytest.fixture
 def manager():
@@ -34,9 +34,9 @@ def test_getNotExistingNote(manager):
         assert 'Note with id invalidId is not found!' in str(e.value)
 
 def test_postNote(manager):
-    newNote = manager.postNote('Test')
+    newNoteId = manager.postNote('Test')
 
-    assert newNote.get('id') in manager.storage
+    assert newNoteId in manager.storage
 
 def test_postNoteNoContent(manager):
     with pytest.raises(Exception) as e:

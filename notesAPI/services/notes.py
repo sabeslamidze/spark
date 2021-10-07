@@ -19,7 +19,7 @@ class NotesManager:
         key = str(uuid.uuid4())
         time = datetime.datetime.utcnow().isoformat(sep='T', timespec='milliseconds') + 'Z'
         newNote = {"id": key, "created": time, "content": content}
-        return self.storage.setdefault(key, newNote)
+        return self.storage.setdefault(key, newNote).get("id")
     
     def deleteNote(self, noteId):
         if noteId not in self.storage:
